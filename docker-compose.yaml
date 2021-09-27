@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  best-number-frontend:
+    build: ./1-best-number-frontend
+    stdin_open: true
+    tty: true
+    depends_on:
+      - best-number-backend
+
+  best-number-backend:
+    build: ./2-best-number-backend
+    depends_on:
+      - best-number-db
+
+  best-number-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=best_number
+    volumes:
+      - best-number-db-data:/var/lib/postgresql/data
+      - ./3-best-number-db:/docker-entrypoint-initdb.d/
+
+volumes:
+  best-number-db-data:

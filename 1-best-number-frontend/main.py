@@ -35,11 +35,9 @@ if answers[ACTION] == GET_BEST_NUMBER:
 
 
 elif answers[ACTION] == SET_BEST_NUMBER:
-    response = requests.post('http://best-number-backend:8000/bestnumber', json={'bestNumber': int(answers[BEST_NUMBER])})
+    response = requests.post('http://best-number-backend:8000/bestnumber',
+                             json={'bestNumber': int(answers[BEST_NUMBER])})
     if response.status_code == 200:
         print('Best number saved')
     else:
         print('Failed to save best number')
-
-
-
