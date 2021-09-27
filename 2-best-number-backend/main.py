@@ -10,7 +10,7 @@ from pydantic import BaseModel
 app = FastAPI()
 
 conn = psycopg2.connect(
-    host='host.docker.internal',
+    host='best-number-db',
     database='best_number',
     user='postgres',
     password='password',
